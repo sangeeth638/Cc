@@ -1,0 +1,484 @@
+/* Base Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.counter-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.counter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.header-icon {
+  color: #3b82f6;
+  margin-right: 12px;
+  font-size: 24px;
+}
+
+.mood-emoji {
+  font-size: 24px;
+  margin-left: auto;
+  animation: rotateEmoji 8s infinite linear;
+}
+
+.app-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Daily Goal Section */
+.goal-section {
+  margin-bottom: 16px;
+}
+
+.goal-display {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.goal-emoji {
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+
+.goal-display:hover {
+  color: #3b82f6;
+}
+
+.goal-display small {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.goal-input-container {
+  display: flex;
+  gap: 8px;
+}
+
+.goal-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.goal-save-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.goal-save-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Progress Bar */
+.progress-container {
+  height: 12px;
+  background-color: #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  background-image: linear-gradient(45deg, 
+    rgba(255,255,255,0.15) 25%, 
+    transparent 25%, 
+    transparent 50%, 
+    rgba(255,255,255,0.15) 50%, 
+    rgba(255,255,255,0.15) 75%, 
+    transparent 75%, 
+    transparent);
+  background-size: 1rem 1rem;
+  animation: progressStripes 1s linear infinite;
+}
+
+@keyframes progressStripes {
+  from { background-position: 1rem 0; }
+  to { background-position: 0 0; }
+}
+
+/* Input Section */
+.input-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.meal-input, .calorie-input {
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.meal-input:focus, .calorie-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  outline: none;
+  transform: scale(1.02);
+}
+
+.add-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-end;
+}
+
+.plus-icon {
+  font-size: 14px;
+}
+
+.add-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+.add-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Meal List */
+.meal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.meal-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.meal-emoji {
+  font-size: 24px;
+  margin-right: 12px;
+}
+
+.meal-item:hover {
+  background-color: #f1f5f9;
+  transform: translateX(4px);
+}
+
+.meal-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.meal-name {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.meal-details {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.meal-calories {
+  font-weight: 500;
+}
+
+.meal-time {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-size: 16px;
+  width: 28px;
+  height: 28px;
+}
+
+.remove-button:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+  transform: rotate(90deg);
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: #94a3b8;
+  font-size: 15px;
+  border: 2px dashed #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.empty-emoji {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* Total Section */
+.total-section {
+  background-color: #f1f5f9;
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.total-calories {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.calorie-count {
+  color: #3b82f6;
+  font-size: 18px;
+}
+
+.calories-summary {
+  font-size: 14px;
+  color: #64748b;
+  text-align: right;
+}
+
+/* Confetti celebration */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.congrats-message {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+  font-weight: 700;
+  color: #3b82f6;
+  animation: dropDown 0.5s ease-out forwards;
+  z-index: 3;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 5s ease-in-out forwards;
+  z-index: 2;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes rotateEmoji {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes confetti-fall {
+  0% {
+    top: -20px;
+    transform: rotate(0deg) translateX(0);
+  }
+  100% {
+    top: 120%;
+    transform: rotate(720deg) translateX(calc(100px - 200px * var(--random, 0.5)));
+  }
+}
+
+@keyframes dropDown {
+  0% {
+    transform: translateX(-50%) translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.pulse {
+  animation: pulse 0.5s ease;
+}
+
+.wiggle {
+  animation: wiggle 1s ease infinite;
+}
+
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+.meal-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.meal-list::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.meal-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .add-button {
+    align-self: stretch;
+  }
+}
